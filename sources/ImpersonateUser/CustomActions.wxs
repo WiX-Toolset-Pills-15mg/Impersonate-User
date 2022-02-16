@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+WiX Toolset Pills 15mg
+Copyright (C) 2019-2022 Dust in the Wind
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+
+        <Binary
+            Id="CustomActionsBinary"
+            SourceFile="$(var.ImpersonateUser.CustomActions.TargetDir)$(var.ImpersonateUser.CustomActions.TargetName).CA.dll" />
+
+        <!--
+        ====================================================================================================
+        Step 1: Create a deferred custom action
+        ====================================================================================================
+        
+        Create a deferred custom action as it is shown in the Deferred Custom Action pill:
+        - https://github.com/WiX-Toolset-Pills-15mg/Deferred-Custom-Action
+        
+        Set the "Impersonate" attribute to "no".
+        
+        ....................................................................................................
+        Impersonate="yes"
+        The custom action runs without administrative privileges with the credentials of the current user.
+
+        Impersonate="no"
+        The custom action is run in System context. When running in system context, the custom action has
+        full access to the system.
+        
+        Default Value: "yes"
+        ....................................................................................................
+        
+        NEXT: LogUserInfoCustomAction.cs
+        -->
+
+        <CustomAction
+            Id="LogUserInfo"
+            BinaryKey="CustomActionsBinary"
+            DllEntry="LogUserInfo"
+            Execute="deferred"
+            Impersonate="yes"/>
+
+    </Fragment>
+</Wix>

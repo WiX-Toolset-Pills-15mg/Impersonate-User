@@ -1,0 +1,1 @@
+msiexec /x ImpersonateUser.msi /l*vx uninstall.log

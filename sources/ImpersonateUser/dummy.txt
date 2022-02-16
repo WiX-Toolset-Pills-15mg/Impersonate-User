@@ -1,0 +1,9 @@
+WiX Toolset Pills 15mg - Impersonate User
+====================================================================================================
+
+This is a dummy file, part of the Impersonate User pill.
+
+TBD
+
+For more details please chech the GitHub repository:
+https://github.com/WiX-Toolset-Pills-15mg/Impersonate-User
